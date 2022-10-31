@@ -1,5 +1,6 @@
 import random
 import timeit
+import keyboard
 
 
 # Generated list randome symbols - numbers & letter, numbers
@@ -109,37 +110,35 @@ def shell_sort(list_ss):
     return list_ss
 
 
-# Основные выбранные элементы
 
-list_range = fn_choice_5() 
-    # The size list
-list_random_any_symbols = fn_create_random_string_2 (list_range)
-    # Variable list randome symbols (digits&letter) - et by the user long
-list_range_sort = fn_choice_5('Timsort','Bublesort','Quicksort','Mergesort','Shellsort') 
-    # Выбор алгоритма сортировки
+flag=True
+while flag:
+    # Основные выбранные элементы
 
+    list_range = fn_choice_5() 
+        # The size list
+    list_random_any_symbols = fn_create_random_string_2 (list_range)
+        # Variable list randome symbols (digits&letter) - et by the user long
+    list_range_sort = fn_choice_5('Timsort','Bublesort','Quicksort','Mergesort','Shellsort') 
+        # Выбор алгоритма сортировки
+    # Algoritmes Calculate time
+    start = timeit.default_timer()
 
-# Algoritmes Calculate time
-
-start = timeit.default_timer()
-
-if list_range_sort == 'Timsort':    
-    sorted (list_random_any_symbols) # Timsort - Python default
-if list_range_sort == 'Bublesort':
-    buble_sort (list_random_any_symbols) # Bublesort - optimasing classik
-if list_range_sort == 'Quicksort':
-    quick_sort (list_random_any_symbols) # Quicksort - classik
-if list_range_sort == 'Mergesort':
-    merge_sort (list_random_any_symbols) # Mergesort - classik
-if list_range_sort == 'Shellsort':
-    shell_sort (list_random_any_symbols) # Shellsort - classik
+    if list_range_sort == 'Timsort':
+        sorted (list_random_any_symbols) # Timsort - Python default
+    if list_range_sort == 'Bublesort':
+        buble_sort (list_random_any_symbols) # Bublesort - optimasing classik
+    if list_range_sort == 'Quicksort':
+        quick_sort (list_random_any_symbols) # Quicksort - classik
+    if list_range_sort == 'Mergesort':
+        merge_sort (list_random_any_symbols) # Mergesort - classik
+    if list_range_sort == 'Shellsort':
+        shell_sort (list_random_any_symbols) # Shellsort - classik
     
-stop = timeit.default_timer()
-execution_time = stop - start
+    stop = timeit.default_timer()
+    execution_time = stop - start
 
-
-# Result work sorting method
-
-print(list_range_sort, " - ", str(list_range), " Executed in " + "[{:.8f}s]".format(execution_time)) #It returns time in sec
-print("Program work is correct :). Thank you.")
-input("Press ENTER to exit")
+    # Result work sorting method
+    print(list_range_sort, " - ", str(list_range), " Executed in " + "[{:.8f}s]".format(execution_time)) #It returns time in sec
+    flag_ = input('Repeat?(Y/N)')
+    flag = True if flag_ == 'Y' or flag_ == 'y' else False
