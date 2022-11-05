@@ -1,12 +1,8 @@
 import random
 import timeit
-import keyboard
-
-
-# Generated list randome symbols - numbers & letter, numbers
 
 def fn_create_random_string (list_range_):
-    """Function generated list randome symbols (digits&letter)"""
+    """Function - Generating the list of random symbols (digits & letters)"""
     string_random = ''
     for i in range(list_range_):
         string_random = string_random + random.choice(list("""123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"""))
@@ -17,16 +13,16 @@ def fn_create_random_string_2 (list_range_):
     return list_
 
 def fn_choice_5 (a=100, b=1000, c=10000, d=50000, f=100000):
-    """Function for the user 1 from the size of the list"""
+    """Function - selecting the number of elements and the algorythm type from the list"""
     if type(a) == int:
-        print("The number of elements in the list:")
+        print("Select the number of elements in the list:")
         print ("1: " + str(a), "2: " + str(b), "3: " + str(c), "4: " + str(d), "5: " + str(f), sep='\n')
     if type(a) == str:
-        print("The number of algoritmes for test:")
+        print("Select the algorithm type:")
         print ("1: " + a, "2: " + b, "3: " + c, "4: " + d, "5: " + f, sep='\n')
     while True:
         try:
-            var_choice = int(input('Select the number from 1 to 5: '))
+            var_choice = int(input('Type a number from 1 to 5: '))
             if var_choice == 1:
                 return a
                 break
@@ -47,10 +43,10 @@ def fn_choice_5 (a=100, b=1000, c=10000, d=50000, f=100000):
         except ValueError as error:
             continue
 
-# Algoritmes functions
+# Algorithms functions
 
-def buble_sort(list_bs):
-    """Function - Buble sort algoritm"""
+def bubble_sort(list_bs):
+    """Function - Bubble sort algorithm"""
     count_bs = 0
     for j in range (len(list_bs) - 1):
         for i in range (len(list_bs) - 1 - j):
@@ -60,7 +56,7 @@ def buble_sort(list_bs):
     return list_bs, count_bs
 
 def quick_sort(list_qs):
-    """Function - Quick sort algoritm"""
+    """Function - Quick sort algorithm"""
     if len(list_qs) <= 1:
         return list_qs
     elem_qs = list_qs [len(list_qs) // 2]
@@ -71,7 +67,7 @@ def quick_sort(list_qs):
 
 
 def merge_two_list (a,b):
-    """Function - Merge two list"""
+    """Function - Merge two lists"""
     c = []
     i = j = 0
     while i < len (a) and j < len (b):
@@ -88,7 +84,7 @@ def merge_two_list (a,b):
     return c
 
 def merge_sort (list_ms):
-    """Function - Merge sort algoritm"""
+    """Function - Merge sort algorithm"""
     if len(list_ms) == 1:
         return list_ms
     middle = len(list_ms) // 2
@@ -113,32 +109,32 @@ def shell_sort(list_ss):
 
 flag=True
 while flag:
-    # Основные выбранные элементы
+    # Common selected elements
 
     list_range = fn_choice_5() 
         # The size list
     list_random_any_symbols = fn_create_random_string_2 (list_range)
-        # Variable list randome symbols (digits&letter) - et by the user long
-    list_range_sort = fn_choice_5('Timsort','Bublesort','Quicksort','Mergesort','Shellsort') 
-        # Выбор алгоритма сортировки
-    # Algoritmes Calculate time
+        # Variable list of random symbols (digits&letter)
+    list_range_sort = fn_choice_5('Timsort','Bubblesort','Quicksort','Mergesort','Shellsort') 
+        # Sorting algorithm selection
+    # Calculating the value of algorithm execution time
     start = timeit.default_timer()
 
     if list_range_sort == 'Timsort':
         sorted (list_random_any_symbols) # Timsort - Python default
-    if list_range_sort == 'Bublesort':
-        buble_sort (list_random_any_symbols) # Bublesort - optimasing classik
+    if list_range_sort == 'Bubblesort':
+        bubble_sort (list_random_any_symbols) # Bubblesort - classic optimized
     if list_range_sort == 'Quicksort':
-        quick_sort (list_random_any_symbols) # Quicksort - classik
+        quick_sort (list_random_any_symbols) # Quicksort - classic
     if list_range_sort == 'Mergesort':
-        merge_sort (list_random_any_symbols) # Mergesort - classik
+        merge_sort (list_random_any_symbols) # Mergesort - classic
     if list_range_sort == 'Shellsort':
-        shell_sort (list_random_any_symbols) # Shellsort - classik
+        shell_sort (list_random_any_symbols) # Shellsort - classic
     
     stop = timeit.default_timer()
     execution_time = stop - start
 
-    # Result work sorting method
-    print(list_range_sort, " - ", str(list_range), " Executed in " + "[{:.8f}s]".format(execution_time)) #It returns time in sec
-    flag_ = input('Repeat?(Y/N)')
-    flag = True if flag_ == 'Y' or flag_ == 'y' else False
+    # Sorting results5
+    print(list_range_sort, " - ", str(list_range), "Executed in " + "[{:.8f}s]".format(execution_time)) # It returns time value in seconds
+    flag_ = input('Repeat?(y/n)')
+    flag = True if flag_ == 'y' or flag_ == 'Y' else False
