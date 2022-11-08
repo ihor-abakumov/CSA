@@ -12,7 +12,7 @@ def fn_create_random_string_2 (list_range_):
     list_ = [random.randint(-list_range_,list_range_) for i in range (list_range_)]
     return list_
 
-def fn_choice_5 (a=100, b=1000, c=10000, d=50000, f=100000):
+def fn_choice_5 (a=5000, b=35000, c=50000, d=45000, f=60000):
     """Function - selecting the number of elements and the algorythm type from the list"""
     if type(a) == int:
         print("Select the number of elements in the list:")
